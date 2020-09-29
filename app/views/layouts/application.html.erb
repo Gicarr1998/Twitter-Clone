@@ -12,7 +12,16 @@
     <body>
         <%= render  "layouts/navbar" %>
         <div class="container">
-        <%= yield %>
+            <% if flash.any? %>
+                <% flash.each do |type, msg| %>
+                    <div class="mt-4 alert alert-<%= type %>" role="alert">
+                        <div>
+                            <%= msg %>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+            <%= yield %>
         </div>
         <%= render  "layouts/footer" %>
     </body>

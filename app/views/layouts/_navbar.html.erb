@@ -14,12 +14,27 @@
                 <li class="nav-item">
                     <%= link_to  "About", about_path, class: "nav-link" %>
                 </li>
-                <li class="nav-item">
-                    <%= link_to  "Sign-Up", signup_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to  "Sign-In", about_path, class: "nav-link" %>
-                </li>
+                <% if logged_in? %>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= current_user.name %>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
+                            <%= link_to "Profile", "#", class: "dropdown-item" %>
+                            <%= link_to "User", "#", class: "dropdown-item" %>
+                        <div class="dropdown-divider"></div>
+                            <%= link_to  "Logout", logout_path, method: :delete, class: "dropdown-item" %>
+                        </div>
+                    </li>
+                <% else %>
+                    <li class="nav-item">
+                        <%= link_to  "Sign-Up", signup_path, class: "nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to  "Login", login_path, class: "nav-link" %>
+                    </li>
+                <% end %>
             </ul>
         </div>
     </div>
