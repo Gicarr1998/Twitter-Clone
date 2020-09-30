@@ -3,14 +3,22 @@
 @import "font-awesome";
 
 .socialmedia{
-    text-align: right;
+  text-align: right;
 }
 #footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: left !important;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: left !important;
+}
+.profile-medium{
+  width: 80px;
+  height: 80px;
+}
+.profile-small{
+  width: 20px;
+  height: 20px;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

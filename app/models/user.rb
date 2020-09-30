@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
   has_secure_password
   #Basic validation
   validates :name, presence: true, length: {minimum:5, maximum:50}
@@ -8,5 +9,5 @@ class User < ApplicationRecord
                                     format: { with: EMAIL_REGEX },
                                     uniqueness: { case_sensitive: false }
   #Validate password
-  validates :password, presence: true, length: { minimum:6 }
+  validates :password, presence: true, length: { minimum:6 }, allow_nil: true
 end

@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, except: [:new, :create]
+  before_action :correct_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :show]
+
+  def index
+    @user = User.paginate(page: params[:page], per_page: 10)
+  end
+
   def new
     @user = User.new
   end
@@ -15,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @micropost = @user.microposts.paginate(page: params[:page], per_page: 12)
   end
 
   def edit
@@ -46,5 +54,13 @@ end
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    if @user != current_user
+      flash[:danger] = "You are not authorized"
+      redirect_to root_url
+    end
   end
 end
