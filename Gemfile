@@ -68,3 +68,6 @@ gem 'font-awesome-sass', '~> 5.13.0'
 gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'will_paginate', '~> 3.2', '>= 3.2.1'
 gem 'will_paginate-bootstrap4', '~> 0.2.2'
+gem 'wdm', '>= 0.1.0'
+gem 'carrierwave', '~> 2.0'
+

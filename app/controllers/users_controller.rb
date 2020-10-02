@@ -22,7 +22,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @micropost = @user.microposts.paginate(page: params[:page], per_page: 12)
+    @micropost = @user.microposts.build
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 12)
   end
 
   def edit
